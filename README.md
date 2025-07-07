@@ -55,8 +55,3 @@ SVM outperformed other models across all metrics, making it the primary choice f
 - **SentimentClassifier** – Trains ML models and makes predictions
 - **ModelComparator** – Compares all models with detailed metrics
 - **Flask Web App** – For real-time input and visualization
-
----
-
-## 📁 Folder Structure
-
