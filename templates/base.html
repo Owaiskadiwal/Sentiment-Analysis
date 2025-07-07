@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sentiment App{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-indigo-600 text-white py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <a href="/" class="text-xl font-bold">SentimentApp</a>
+            <div class="space-x-4">
+                <a href="/" class="hover:text-gray-300">Predict</a>
+                <a href="/compare" class="hover:text-gray-300">Compare Models</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="p-6">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

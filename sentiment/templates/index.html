@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .result h3 {
+            color: #555;
+        }
+        .result h4 {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sentiment Analysis</h1>
+    <form action="/predict" method="post">
+        <textarea name="text" placeholder="Enter your text here..." required></textarea><br>
+        <input type="submit" value="Analyze">
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h3>Sentiment Analysis Results:</h3>
+        <ul>
+            <li><strong>heBERT Sentiment Analysis:</strong> {{ prediction['heBERT_sentiment_analysis'][0]['label'] }} ({{ prediction['heBERT_sentiment_analysis'][0]['score'] | round(2) }})</li>
+            <li><strong>Twitter RoBERTa Base Sentiment:</strong> {{ prediction['twitter_roberta_base_sentiment'][0]['label'] }} ({{ prediction['twitter_roberta_base_sentiment'][0]['score'] | round(2) }})</li>
+            <li><strong>Twitter XLM RoBERTa Base Sentiment:</strong> {{ prediction['twitter_xlm_roberta_base_sentiment'][0]['label'] }} ({{ prediction['twitter_xlm_roberta_base_sentiment'][0]['score'] | round(2) }})</li>
+        </ul>
+        <h4>Majority Sentiment: {{ majority_sentiment }}</h4>
+        <h4>Average Sentiment Score: {{ average_sentiment if average_sentiment is not none else 'N/A' }}</h4>
+    </div>
+    {% endif %}
+</body>
+</html>
